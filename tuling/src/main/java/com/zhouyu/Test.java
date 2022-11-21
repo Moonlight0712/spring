@@ -30,11 +30,20 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		// 创建一个Spring容器
+
 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
 		UserService userService = (UserService) applicationContext.getBean("userService");
 		userService.test();
+
+
+//		UserService userService1 = new UserService();
+//		for (Field field : userService.getClass().getDeclaredFields()) {
+//			//假设该类被我们的Autowired修饰了那么就执行逻辑
+//			if (field.isAnnotationPresent(Autowired.class)) {
+//				field.set(userService1, ??);
+//			}
+//		}
 
 
 //		UserService userService1 = new UserService();

@@ -38,6 +38,10 @@ import javax.xml.transform.stream.StreamSource;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
+import org.springframework.beans.factory.ObjectFactory;
+
+import org.springframework.oxm.jibx.FlightType;
+import org.springframework.oxm.xstream.Flights;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
@@ -50,9 +54,7 @@ import org.springframework.core.testfixture.xml.XmlContent;
 import org.springframework.oxm.AbstractMarshallerTests;
 import org.springframework.oxm.UncategorizedMappingException;
 import org.springframework.oxm.XmlMappingException;
-import org.springframework.oxm.jaxb.test.FlightType;
-import org.springframework.oxm.jaxb.test.Flights;
-import org.springframework.oxm.jaxb.test.ObjectFactory;
+
 import org.springframework.oxm.mime.MimeContainer;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.ReflectionUtils;
@@ -98,7 +100,7 @@ class Jaxb2MarshallerTests extends AbstractMarshallerTests<Jaxb2Marshaller> {
 		FlightType flight = new FlightType();
 		flight.setNumber(42L);
 		flights = new Flights();
-		flights.getFlight().add(flight);
+//		flights.getFlight().add(flight);
 		return flights;
 	}
 
