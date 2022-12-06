@@ -37,13 +37,29 @@ public class Test {
 		userService.test();
 
 
-//		UserService userService1 = new UserService();
-//		for (Field field : userService.getClass().getDeclaredFields()) {
-//			//假设该类被我们的Autowired修饰了那么就执行逻辑
-//			if (field.isAnnotationPresent(Autowired.class)) {
-//				field.set(userService1, ??);
-//			}
-//		}
+		/**
+		 * 测试UserService中@PostCustruct修饰的初始化前的方法
+		 */
+		UserService userService1 = new UserService();
+		for (Field field : userService.getClass().getDeclaredFields()) {
+			//假设该类的属性被我们的Autowired修饰了那么就执行逻辑
+			if (field.isAnnotationPresent(Autowired.class)) {
+				field.set(userService1, ??);
+			}
+		}
+
+		for (Method method : userService1.getClass().getDeclaredMethods()) {
+			if (method.isAnnotationPresent(PostConstruct.class)) {
+				try {
+					//反射调用无参数的方法
+					method.invoke(userService1, null);
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 
 //		UserService userService1 = new UserService();
